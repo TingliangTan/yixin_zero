@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./stylesheets/bootstrap.min.cosmo.css">
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>       
+        <title>宜信零日漏洞</title>
+        <style>
+.padding-big {
+    padding: 5em 0;
+}
+           .padding-middle {
+               padding: 2.5em 0;
+           }
+           .padding-small{
+               padding: 1em 0;
+           }
+           .rect-border {
+               border: black 1px solid;
+           }
+           .circle-border {
+               margin:auto;
+               border-radius: 50%;
+               overflow: hidden;
+           }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="main-nav">
+                    <ul class="nav navbar-nav">
+                        <li class= "active" ><a href="/">首页</a></li>
+                        <li><a href="/award_projects">悬赏项目</a></li>
+                        <li><a href="/loop_hole_report">漏洞报告</a></li>
+                        <li><a href="/toplist">排行榜</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><div style="line-height:3.6em; color:white;" ><a href="/register">注册</a>/<a href="/login">登录</a></div></li>>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class= "container" style="width: 100%;">
+            <div class="row">
+                <div class="col-sm-2 text-center">
+                    <select name="project">
+                        <option value="0" > 宜人贷专享测试</option>
+                        <option value="1" >指旺专享测试</option>
+                    </select>
+                </div>
+                <div class="col-sm-10">
+                    <div class="col-sm-2">待审核</div>
+                    <div class="col-sm-2">待处理</div>
+                    <div class="col-sm-2">已处理</div>
+                    <div class="col-sm-2">所有</div>
+                    <div class="col-sm-2"><input type="text" class="form-control"></div>
+                    <div class="col-sm-2"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 text-center">
+                    <div class="row">#163:XSS漏洞攻击</div>
+                    <div class="row">#161:sql注入攻击</div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="row report-head">
+                        <h2>#163:XSS漏洞攻击</h2>
+                    </div>
+                    <hr>
+                    <div class="row report-content">
+                    </div>
+                    <div class="row report-process">
+                        <h3>漏洞处理</h3>
+                        <div class="btn btn-primary">漏洞评级</div>
+                        <div class="btn btn-primary">申请忽略</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

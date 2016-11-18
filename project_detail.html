@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>宜信零日漏洞</title>
+    <style>
+        html {
+            font-size: 14px;
+        }
+        .padding-big {
+            padding: 5em 0;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            color: white;
+        }
+        .padding-middle {
+            padding: 2.5em 0;
+        }
+        .padding-small{
+            padding: 1em 1em;
+        }
+        .rect-border {
+            border: black 1px solid;
+        }
+        .circle-border {
+            margin:auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .head-bk {
+            height: 7.5rem;
+            background:black url(./img/head.jpg) center no-repeat;
+            background-size: 100% auto;
+            background-position: center 0;
+        }
+        .btn.head-left {
+            position: absolute;
+            height: 2em;
+            line-height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            top: 7.2rem;
+            left: 3.3rem;
+        }
+        .head-right{
+            position: absolute;
+            height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 2em;
+            top: 7.2rem;
+            left: 13.3rem;
+        }
+        .round-border {
+            font-size: .3rem;
+            line-height: 1.8em;;
+            height: 1.8em;
+            text-align: center;
+            width: 2rem;
+            border: black 2px solid;
+            border-radius: .1rem;
+        }
+        .nav {
+            position: relative;
+            padding:0;
+            margin:0;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: rgb(15,55,131);
+        }
+        .nav-item{
+            text-align: center;
+            background-color: rgb(15,55,131);
+        }
+        .nav a {
+            line-height: 4.4em;
+        }
+        .nav-item img {
+            padding-right: .3em;
+        }
+        .nav .row {
+            height: 4.4em;
+        }
+        .nav-item:hover{
+            background-color: rgb(0,35,101);
+        }
+    </style>
+</head>
+<body>
+<div class="nav container">
+    <div class="row">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+        <div class="col-sm-9">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+            <div class="col-sm-2 nav-item"><a href="/award_projects"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+            <div class="col-sm-2 nav-item"><a href="/loop_hole_report"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+            <div class="col-sm-2 nav-item"><a href="/toplist"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+            <div class="col-sm-2 nav-item"><div style="line-height:4.4em; color:white;" ><img src="./img/register.png" height="100%"/>wenfengluo</div></div>>
+        </div>
+    </div>
+</div>
+<style>
+   .intro {
+       background-color: rgb(72,192,255);
+       border: black 1px solid;
+       border-radius: 1em;
+   }
+</style>
+<div class="container" style="margin: 3em 5em;">
+    <div class="row margin-middle">
+        <div class="row intro">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 padding-middle text-center"><img src="./img/tmp.png" height="100%"></div>
+            <div class="col-sm-6 padding-middle">
+                <div class="row">
+                    <div class="col-sm-10" style="color:white; font-size: 24px;">指旺理财业务安全测验
+                        <span><div class="btn btn-sm btn-primary">private</div></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8" style="color:white; font-size: 16px;line-height: 2em;"><span class="countdown">剩余时间:1天 1:45:21</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8" style="color:white; font-size: 14px;">指旺理财，由互联网金融服务平台宜信出品，提供全方位的风险金保障，10年100%兑付；100元起投，期限多样。</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="color:white; font-size: 16px;line-height: 2em;">2016.11.9-2016.11.20</div>
+                    <div class="col-sm-6" style="color:white; font-size: 16px;line-height: 2em;">奖金等级 ★★★★★</div>
+                </div>
+            </div>
+            <div class="col-sm-1">
+                <div class="btn btn-primary" style="margin-top: 7em;">提交报告</div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <div class="row margin-small">
+        <div class="col-sm-8 padding-small">
+            <table class="table table-stripped">
+                <tr><th>测试范围</th></tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr><th>超出范围</th></tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr><th>漏洞奖励和定义</th></tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr><th>注意事项</th></tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <table class="table table-stripped">
+                    <tr>
+                        <th>厂商</th>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-stripped">
+                    <tr>
+                        <th>成绩</th>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-small">
+        <h5>项目动态</h5>
+    </div>
+</div>
+</body>
+</html>
