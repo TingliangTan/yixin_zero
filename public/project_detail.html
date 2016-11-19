@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>宜信零日漏洞</title>
+    <style>
+        html {
+            font-size: 14px;
+        }
+        .padding-big {
+            padding: 5em 0;
+        }
+        .nav a:hover {
+            color: white;
+        }
+        .nav a {
+            color: white;
+        }
+        .padding-middle {
+            padding: 2.5em 0;
+        }
+        .padding-small{
+            padding: 1em 1em;
+        }
+        .rect-border {
+            border: black 1px solid;
+        }
+        .circle-border {
+            margin:auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .head-bk {
+            height: 7.5rem;
+            background:black url(./img/head.jpg) center no-repeat;
+            background-size: 100% auto;
+            background-position: center 0;
+        }
+        .btn.head-left {
+            position: absolute;
+            height: 2em;
+            line-height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            top: 7.2rem;
+            left: 3.3rem;
+        }
+        .head-right{
+            position: absolute;
+            height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 2em;
+            top: 7.2rem;
+            left: 13.3rem;
+        }
+        .round-border {
+            font-size: .3rem;
+            line-height: 1.8em;;
+            height: 1.8em;
+            text-align: center;
+            width: 2rem;
+            border: black 2px solid;
+            border-radius: .1rem;
+        }
+        .nav {
+            position: relative;
+            padding:0;
+            margin:0;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: rgb(15,55,131);
+        }
+        .nav-item{
+            text-align: center;
+            background-color: rgb(15,55,131);
+        }
+        .nav a {
+            line-height: 4.4em;
+        }
+        .nav-item img {
+            padding-right: .3em;
+        }
+        .nav .row {
+            height: 4.4em;
+        }
+        .nav-item:hover{
+            background-color: rgb(0,35,101);
+        }
+
+        .modal-backdrop {
+            z-index: 0;
+        }
+        #timeline {
+            list-style: none;
+            margin: 50px 0 30px 120px;
+            padding-left: 30px;
+            border-left: 3px solid #0c0479;
+        }
+        #timeline li {
+            margin: 40px 0;
+            position: relative;
+        }
+        .date {
+            margin-top: -10px;
+            top: 50%;
+            left: -158px;
+            font-size: 1.2em;
+            line-height: 20px;
+            position: absolute;
+        }
+
+        .circle {
+            margin-top: -10px;
+            top: 50%;
+            left: -40px;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border: 3px solid #0c0479;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+        }
+
+        .content {
+            max-height: 20px;
+            padding: 50px 20px 0;
+            border-color: transparent;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 0.5em;
+            position: relative;
+        }
+
+        label {
+            font-size: 1.3em;
+            position: absolute;
+            z-index: 100;
+            top: 10px;
+        }
+
+        .work a {
+            color: blue;
+        }
+
+
+        /* -------------------------------------
+         * mobile phones (vertical version only)
+         * ------------------------------------- */
+        @media screen and (max-width: 767px) {
+            #timeline {
+                margin-left: 0;
+                border-left: none;
+            }
+            #timeline li {
+                margin: 50px 0;
+            }
+
+            label {
+                width: 85%;
+                font-size: 1.1em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: block;
+                transform: translateX(18px);
+            }
+
+            .content {
+                padding-top: 45px;
+                border-color: #eee9dc;
+            }
+            .circle, .date {
+                display: none;
+            }
+        }
+        .avatar {
+            display: inline;
+            border-style: hidden;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="nav container">
+    <div class="row">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+        <div class="col-sm-9">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+            <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+            <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+            <div class="col-sm-2 nav-item"><a href="/rank.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+            <div class="col-sm-2 nav-item"><div style="line-height:4.4em; color:white;" ><img src="./img/register.png" height="100%"/>wenfengluo</div></div>>
+        </div>
+    </div>
+</div>
+<style>
+   .intro {
+       background-color: rgb(72,192,255);
+       width: 100%;
+       margin-left:0;
+   }
+</style>
+<div class="container" style="width:100%;">
+    <div class="row" >
+        <div class="row intro">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 padding-middle text-center"><img id="logo" src="./img/yrd-1.jpg" height="140px"></div>
+            <div class="col-sm-5 padding-middle">
+                <div class="row">
+                    <div class="col-sm-10" style="color:white; font-size: 24px;"><span class="project_name">务安全测验</span>
+                        <span id="priv"><div class="btn btn-sm btn-primary">private</div></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8" style="color:white; font-size: 16px;line-height: 2em;"><span class="countdown">剩余时间:1天 1:45:21</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8" style="color:white; font-size: 14px;"><span class="project_name"></span>，提供全方位的风险金保障，10年100%兑付；100元起投，期限多样。</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="color:white; font-size: 16px;line-height: 2em;">2016.11.9-2016.11.20</div>
+                    <div class="col-sm-6" style="color:white; font-size: 16px;line-height: 2em;">奖金等级 <span style="color:gold">★★★★★</span></div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="btn btn-primary" id="report" style="margin-top: 7em;">提交报告</div>
+                <div class="btn btn-primary" id="participate" style="margin-top: 7em;">立即参与</div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <div class="row padding-small" id="public-detail">
+        <div class="col-sm-8">
+            <table class="table table-bordered" id="private-detail">
+            <tr><th>核心API文档</th></tr>
+            <tr>
+                <td>
+                    <div class="btn btn-default">下载</div>
+                </td>
+            </tr>
+            </table>
+            <table class="table table-bordered">
+                <tr><th>测试范围</th></tr>
+                <tr>
+                    <td>
+                        *.qufenqi.com<br>
+                        *.laifenqi.com<br>
+                        *.quzu.com<br>
+                        *.qudian.com
+                    </td>
+                </tr>
+                <tr><th>超出范围</th></tr>
+                <tr>
+                    <td>
+                        厂商拥有漏洞最终解释权<br>
+                        由一个问题点衍伸出来的其他子平台可登陆和其他漏洞一律算低危.<br>
+                        应厂商要求，不同地址同一个参数的注入点只算一个.<br>
+                        注意：超出范围视为无效漏洞处理.
+                    </td>
+                </tr>
+                <tr><th>漏洞奖励和定义</th></tr>
+                <tr>
+                    <td>
+                        高危最低奖励 ￥3500<br>
+<br>
+                        直接获取业务服务器权限的漏洞。包括但不限于任意命令执行、上传获取webshell、任意代码执行、SQL注入获取系统权限、SSH弱口令；<br>
+                        直接导致严重的信息泄漏漏洞。包括但不限于核心DB的SQL注入漏洞；包括但不限于批量盗取用户身份信息漏洞；<br>
+                        直接导致严重影响的逻辑漏洞。包括但不限于任意帐号密码更改漏洞、交易支付方面的严重问题。<br>
+                        直接批量盗取用户身份信息的漏洞。包括但不限于SQL注入、数据库弱口令；<br>
+                        任意文操作漏洞，包括但不限于任意文件读、写、删除、下载等操作；<br>
+                        如何证明漏洞的危害？<br>
+                        基于是否为核心数据，是否可以对用户造成大面积危害。<br>
+                        中危最低奖金 ￥700<br>
+<br>
+                        1、需交互方可影响用户的漏洞。包括但不仅限于一般页面的存储型XSS、反射型 XSS（包括反射型 DOM-XSS）、重要操作CSRF、URL跳转漏洞。<br>
+                        2、普通越权操作。包括但不仅限于不正确的直接对象引用，普通信息的越权修改等。<br>
+                        3、普通信息泄漏。包括但不仅限于web路径遍历、系统路径遍历。<br>
+                        4、普通的逻辑设计缺陷和流程缺陷。<br>
+                        低危最低奖金 ￥50<br>
+<br>
+                        1、轻微信息泄漏。包括但不仅限于路径信息泄漏、SVN信息泄漏、PHPinfo、异常信息泄露，以及客户端应用本地SQL注入（仅泄漏数据库名称、字段名、cache内容）、日志打印、配置信息、异常信息等。<br>
+                        2、难以利用但存在安全隐患的漏洞。包括但不仅限于难以利用的SQL注入点、可引起传播和利用的Self-XSS、需构造部分参数且有一定影响的CSRF。<br>
+                        无效奖金￥0<br>
+<br>
+                        如下漏洞不收取（包括但不限于）：<br>
+                        1、登录/注销CSRF；<br>
+                        2、SSL/TLS安全设置问题；<br>
+                        3、没有实际意义的自动化扫描器报告；<br>
+                        4、物理或社会工程学攻击；<br>
+                        5、登入登出URL跳转漏洞；<br>
+                        6、在其他漏洞平台重复提交；<br>
+                        7、批量手机短信发送问题；<br>
+                        8、危害不大与较难利用的反射型XSS；包括但不限于self-xss等；<br>
+                        9、后台、Mysql端口对外开放对外访问，且需要账户密码登录；<br>
+                        10、无限制Email轰炸，用户批量注册等；<br>
+                        11、无法证明漏洞是否存在或者危害，比如一些在线的APP漏洞检测工具的检测结果等。<br>
+                        12、需要物理接触到用户设备进行攻击；<br>
+                        13、密码和账户策略，如重置密码链接时效性或密码强度问题；<br>
+                        14、垃圾邮件或社会工程学攻击，包括SPF及DKIM问题<br>
+                        15、仅影响过时或没有打补丁的浏览器和用户；<br>
+                        16、基于厂商员工或相关人员的社会工程学攻击；<br>
+                        17、对厂商财产或设备进行任何物理攻击的尝试；<br>
+                        18、问题没有明确的安全性影响，比如点击劫持，缺少安全报头或错误信息；<br>
+                        19、拒绝服务攻击；<br>
+                        20、软件版本号信息泄露；<br>
+                        21、网站被第三方程序阻止（如谷歌浏览器对恶意网站的警告）；
+                    </td>
+                </tr>
+                <tr><th>注意事项</th></tr>
+                <tr>
+                    <td>
+                        1.厂商关心的核心业务是：下单，还款，认证审核。非核心业务指在测试范围内的其他功能。<br>
+                        2.由于厂商的业务体量已经很大，希望大家低调谨慎测试，不要影响正常业务，也不要在以外的其他地方讨论项目细节。有问题随时找管理员。<br>
+                        3.认证审核功能需要测试是否能绕过审核，请自行注册新账号测试。<br>
+                        4.www.laifenqi.com自行注册，只要芝麻认证达到650以上均可通过审核。<br>
+                        5.quzu.com由于不再开放注册功能，只需要测试目前前端开放的页面。​
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>厂商</th>
+                    </tr>
+                    <tr>
+                        <td><span class="project_name"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>成绩</th>
+                    </tr>
+                    <tr>
+                        <td>100</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-small" style="padding-left: 2em;">
+        <h4>项目动态</h4>
+        <div class="col-sm-7" style="padding-left: 4em;">
+            <ul id='timeline'>
+                <li class='work'>
+                    <div class="content">
+                        <label>
+                            <span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                            <a href="#">狸狸</a>向<a href="#"><span class="project_name"></span></a>提交了一个安全漏洞
+                        </label>
+                        <span class='date'>09 Sep. 2016</span>
+                        <span class='circle'></span>
+                    </div>
+
+                </li>
+                <li class='work'>
+                    <div class="content">
+                        <label><span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                            <a href="#">小保</a>向<a href="#"><span class="project_name"></span></a>提交了一个安全漏洞</label>
+                        <span class='date'>11 Oct. 2016</span>
+                        <span class='circle'></span>
+                    </div>
+
+                </li>
+                <li class='work'>
+                    <div class="content">
+                        <label><span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                            <a href="#">继磊</a>向<a href="#"><span class="project_name"></span></a>提交了一个安全漏洞</label>
+                        <span class='date'>11 Nov. 2016</span>
+                        <span class='circle'></span>
+                    </div>
+
+                </li>
+                <li class='work'>
+                    <div class="content">
+                        <label><span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                            <a href="#">小檀</a>向<a href="#"><span class="project_name"></span></a>提交了一个安全漏洞</label>
+                        <span class='date'>18 Nov. 2016</span>
+                        <span class='circle'></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal fade" id="messageDlg" tabindex="100" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        申请加入项目
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered">
+                        <tr><th>小提示</th></tr>
+                        <tr><td>
+                            参加要求：资深白帽子或行业专家<br>
+                            提交漏洞可获得积分，升级到更高级别<br>
+                            请认真填写申请理由，如技术经历、工作经历等
+                        </td></tr>
+                    </table>
+                    <table class="table" style="margin-bottom: 0;">
+                        <tr><th>申请理由</th></tr>
+                        <tr><td>
+                            <textarea style="width:100%; height: 6em;"  style="overflow: hidden; border-radius: .5em;"></textarea>
+                        </td></tr>
+                        </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button id="submit" type="button" class="btn btn-primary">
+                        申请加入
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <script>
+        function getParam(key){
+            var searchStr = location.search;
+            var val = "";
+            if (searchStr.indexOf(key+"=")>0) {
+                var re = new RegExp(".*"+key+"=(.*)");
+                var valStr = searchStr.replace(re, '$1');
+                val = valStr.replace(/&.*/g, '');
+            }
+            return val;
+        }
+        var projectName= decodeURIComponent(getParam("project_name"));
+        var projectNameNodes = document.getElementsByClassName("project_name");
+        for(var i = 0; i< projectNameNodes.length; i++) {
+            projectNameNodes.item(i).innerHTML=projectName;
+        }
+        var isReport= getParam("report");
+        var isPriv= getParam("priv");
+        var reportNode=document.getElementById("report");
+        var participateNode = document.getElementById("participate");
+        if (isReport)  {
+            reportNode.style.display="block";
+            participateNode.style.display="none";
+        } else {
+            reportNode.style.display="none";
+            participateNode.style.display="block";
+        }
+        if(!isPriv) {
+            document.getElementById("priv").style.display="none";
+            document.getElementById("private-detail").style.display="none";
+            document.getElementById("logo").src = "./img/qfq.jpg";
+        } else {
+            document.getElementById("private-detail").style.display="block";
+        }
+        participateNode.onclick= function(){
+            $("#messageDlg").modal();
+        };
+        document.getElementById("submit").onclick=function(){
+            location= location + "&report=1";
+        };
+        reportNode.onclick = function(){
+            location= "/submit_loop_hole.html"+location.search;
+        };
+    </script>
+</div>
+</body>
+</html>

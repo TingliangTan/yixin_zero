@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>宜信零日漏洞</title>
+    <style>
+        html {
+            font-size: 14px;
+        }
+        .padding-big {
+            padding: 5em 0;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            color: white;
+        }
+        .padding-middle {
+            padding: 2.5em 0;
+        }
+        .padding-small{
+            padding: 1em 1em;
+        }
+        .rect-border {
+            display:inline-block;
+            height: 1.5em;
+            line-height: 1.5em;
+            text-align: center;
+            border: black 1px solid;
+            margin: 0 1em;
+            padding: 0 1em;
+            border-radius: .3em;
+        }
+        .circle-border {
+            margin:auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .head-bk {
+            height: 7.5rem;
+            background:black url(./img/head.jpg) center no-repeat;
+            background-size: 100% auto;
+            background-position: center 0;
+        }
+        .btn.head-left {
+            position: absolute;
+            height: 2em;
+            line-height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            top: 7.2rem;
+            left: 3.3rem;
+        }
+        .head-right{
+            position: absolute;
+            height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 2em;
+            top: 7.2rem;
+            left: 13.3rem;
+        }
+        .round-border {
+            font-size: .3rem;
+            line-height: 1.8em;;
+            height: 1.8em;
+            text-align: center;
+            width: 2rem;
+            border: black 2px solid;
+            border-radius: .1rem;
+        }
+        .nav {
+            position: relative;
+            padding:0;
+            margin:0;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: rgb(15,55,131);
+        }
+        .nav-item{
+            text-align: center;
+            background-color: rgb(15,55,131);
+        }
+        .nav a {
+            line-height: 4.4em;
+        }
+        .nav-item img {
+            padding-right: .3em;
+        }
+        .nav .row {
+            height: 4.4em;
+        }
+        .nav-item:hover{
+            background-color: rgb(0,35,101);
+        }
+        .glyphicon-star {
+            color: #e67e22;
+        }
+        .glyphicon-star.half {
+            position: relative;
+        }
+        .glyphicon-star.half:before {
+            position: relative;
+            z-index: 9;
+            width: 30%;
+            display: block;
+            overflow: hidden;
+        }
+        .glyphicon-star.half:after {
+            content: '\e006';
+            position: absolute;
+            z-index: 8;
+            color: #bdc3c7;
+            top: 0;
+            left: 0;
+        }
+        hr {
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+<div class="nav container">
+    <div class="row">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+        <div class="col-sm-9">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+            <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+            <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+            <div class="col-sm-2 nav-item"><a href="/rank.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+            <div class="col-sm-2 nav-item"><div style="line-height:4.4em; color:white;" ><img src="./img/register.png" height="100%"/>wenfengluo</div></div>>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row padding-middle" style="padding-bottom: 1em;">
+        <div class="col-sm-6" style="font-size: 24px; color: rgb(49,126,172);">所有项目</div>
+        <div class="col-sm-6">
+            <div class="rect-border">所有</div>
+            <div class="rect-border">进行中</div>
+            <div class="rect-border">已完成</div>
+        </div>
+    </div>
+    <hr>
+    <div class="row padding-small">
+        <div class="media">
+            <div class="media-left" style="padding:0 3em;">
+                <a href="#">
+                    <img class="img-rounded media-object" src="./img/bm.png" style=" height: 180px; ">
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="row padding-small">
+                    <h4 class="media-heading" style="color:black; padding: .5em;">
+                        某互联网金融平台安全和业务测试
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 0.7em; color:cornflowerblue">剩余时间：1天 2:30:13</span>
+                    </h4>
+                </div>
+                <p style="color:gray;">某P2P金融平台，主要测试内容包括新用户首次购买过程中的业务流程和安全漏洞</p>
+                <div class="row" style="color: cornflowerblue; margin-top:10px;">
+                    <div class="col-sm-4" style="line-height: 5.5em;">2016.11.9-2016.11.18</div>
+                    <div class="col-sm-4 rating" style="line-height: 5.5em;">
+                        <span>奖金等级：<span style="font-size: 1em; color:gold;">★★★★★</span></span>
+                    </div>
+                    <div class="col-sm-4" >
+                        <div style="margin-top: 20px;"><a href="/project_detail.html?project_name=某P2P金融平台" class="btn btn-primary" role="button">立即参与</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row padding-small">
+        <div class="media">
+            <div class="media-left" style="padding:0 3em;">
+                <a href="#">
+                    <img class="img-rounded media-object" src="./img/qfq.jpg" style=" height: 180px; ">
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="row padding-small">
+                    <h4 class="media-heading" style="color:black; padding: .5em;">
+                        趣分期安全测试&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 0.7em; color:cornflowerblue">剩余时间：1天 2:30:13</span>
+                    </h4>
+                </div>
+                <p style="color:gray;">趣分期(qufenqi.com)-深受中国大学生喜爱的分期购物商城，服务全国大学生。凭学生证即享手机、电脑平板、相机等零首付分期。</p>
+                <div class="row" style="color: cornflowerblue; margin-top:10px;">
+                    <div class="col-sm-4" style="line-height: 5.5em;">2016.11.9-2016.11.18</div>
+                    <div class="col-sm-4 rating" style="line-height: 5.5em;">
+                        <span>奖金等级：<span style="font-size: 1em; color:gold;">★★★★★</span></span>
+                    </div>
+                    <div class="col-sm-4" >
+                        <div style="margin-top: 20px;"><a href="/project_detail.html?project_name=趣分期" class="btn btn-primary" role="button">立即参与</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row padding-small">
+        <div class="media">
+            <div class="media-left" style="padding:0 3em;">
+                <a href="#">
+                    <img class="img-rounded media-object" src="./img/yrd.png" style=" width: 180px; margin-top: 50px;">
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="row padding-small">
+                    <h4 class="media-heading" style="color:black; padding: .5em;">
+                        宜人贷安全测试&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span style="font-size: 0.7em; color:cornflowerblue">剩余时间：1天 2:30:13</span>
+                    </h4>
+                </div>
+                <p style="color:gray;">测试内容包括新用户首次购买过程中的业务流程和安全漏洞</p>
+                <div class="row" style="color: cornflowerblue; margin-top:10px;">
+                    <div class="col-sm-4" style="line-height: 5.5em;">2016.11.9-2016.11.18</div>
+                    <div class="col-sm-4 rating" style="line-height: 5.5em;">
+                        <span>奖金等级：<span style="font-size: 1em; color:gold;">★★★★★</span></span>
+                    </div>
+                    <div class="col-sm-4" >
+                        <div style="margin-top: 20px;"><a href="/project_detail.html?project_name=宜人贷&priv=1" class="btn btn-primary" role="button">立即参与</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</body>
+</html>

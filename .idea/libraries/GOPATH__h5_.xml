@@ -1,0 +1,42 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;h5&gt;">
+    <CLASSES>
+      <root url="file://$USER_HOME$/code/golang/src/qxf-backend" />
+      <root url="file://$USER_HOME$/code/golang/src/golang.org" />
+      <root url="file://$USER_HOME$/code/golang/src/gopl.io" />
+      <root url="file://$USER_HOME$/code/golang/src/9fans.net" />
+      <root url="file://$USER_HOME$/code/golang/src/study" />
+      <root url="file://$USER_HOME$/code/golang/src/euro_cup" />
+      <root url="file://$USER_HOME$/code/golang/src/git.bdp.cc" />
+      <root url="file://$USER_HOME$/code/golang/src/code.google.com" />
+      <root url="file://$USER_HOME$/code/golang/src/my-verilog-toolkits" />
+      <root url="file://$USER_HOME$/code/golang/src/url_gen" />
+      <root url="file://$USER_HOME$/code/golang/src/qxf-cms" />
+      <root url="file://$USER_HOME$/code/golang/src/acc_filter_go" />
+      <root url="file://$USER_HOME$/code/golang/src/gopkg.in" />
+      <root url="file://$USER_HOME$/code/golang/src/github.com" />
+      <root url="file://$USER_HOME$/code/golang/src/loop_hole" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/code/golang/src/qxf-backend" />
+      <root url="file://$USER_HOME$/code/golang/src/golang.org" />
+      <root url="file://$USER_HOME$/code/golang/src/gopl.io" />
+      <root url="file://$USER_HOME$/code/golang/src/9fans.net" />
+      <root url="file://$USER_HOME$/code/golang/src/study" />
+      <root url="file://$USER_HOME$/code/golang/src/euro_cup" />
+      <root url="file://$USER_HOME$/code/golang/src/git.bdp.cc" />
+      <root url="file://$USER_HOME$/code/golang/src/code.google.com" />
+      <root url="file://$USER_HOME$/code/golang/src/my-verilog-toolkits" />
+      <root url="file://$USER_HOME$/code/golang/src/url_gen" />
+      <root url="file://$USER_HOME$/code/golang/src/qxf-cms" />
+      <root url="file://$USER_HOME$/code/golang/src/acc_filter_go" />
+      <root url="file://$USER_HOME$/code/golang/src/gopkg.in" />
+      <root url="file://$USER_HOME$/code/golang/src/github.com" />
+      <root url="file://$USER_HOME$/code/golang/src/loop_hole" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>

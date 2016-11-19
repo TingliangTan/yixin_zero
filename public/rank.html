@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>英雄榜</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+
+    <style type="text/css">
+        html {
+            font-size: 14px;
+        }
+        .padding-big {
+            padding: 5em 0;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            color: white;
+        }
+        .nav {
+            position: relative;
+            padding:0;
+            margin:0;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: rgb(15,55,131);
+        }
+        .nav a {
+            line-height: 4.4em;
+        }
+        .nav-item {
+            text-align: center;
+        }
+        .nav-item img {
+            padding-right: .3em;
+        }
+        .nav .row {
+            height: 4.4em;
+        }
+        .nav-item:hover{
+            background-color: rgb(0,35,101);
+        }
+        /* -------------------------------------
+        */
+        .ranks {
+            background: #eeeeee;
+            color: black;
+            font-size: 14px;
+        }
+        .ranks a {
+            color: black;
+        }
+        .ranks td { height: 50px;}
+        .ranks th { height: 45px;}
+        .ranks td, .ranks th {
+            /*            text-align:center;
+            */
+            vertical-align: middle;
+        }
+
+        .ranks thead {
+            background: #cccccc;
+        }
+        .ranks tr > td:first-child + td + td { color: #eb6100;}
+        .rank-filter {
+            margin-top: 63px;
+            margin-bottom: 65px;
+        }
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+        .material-icons {
+            margin-right: 10px;
+            color: green;
+        }
+
+        /*.rank-table {
+            margin-top: 65px;
+        }*/
+
+    </style>
+</head>
+<body>
+<div class="nav container">
+    <div class="row">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+        <div class="col-sm-9">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+            <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+            <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+            <div class="col-sm-2 nav-item"><a href="/rank.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+            <div class="col-sm-2 nav-item"><a href="javascript:void(0)"><img src="./img/register.png" height="100%"/>wenfengluo</a></div>
+        </div>
+    </div>
+</div>
+<style>
+    body{
+        color: #fff;
+        height: 176px;
+        background: url('./img/hacker.jpg') no-repeat;
+        background-position: 0 1rem;
+        background-size: 100% auto;
+        width: 100%;
+    }
+    /*    .head-image{
+            height: 369px;
+            max-width: 100%;
+        }*/
+
+    .content {
+        margin-top: 5.8rem;
+    }
+</style>
+<div class="head-image">
+    <div class="mdl-card__title">
+    </div>
+</div>
+
+
+<!-- <div class="row">
+<div class="left" style="float: left;">
+    <a href="#" class="btn btn-primary">总榜</a>
+    <a href="#" class="btn btn-primary disabled">月榜</a>
+</div>
+<div class="right" style="float: right;">
+    <a href="#" class="btn btn-primary">奖金</a>
+    <a href="#" class="btn btn-primary disabled">漏洞</a>
+</div> -->
+<div class="container content">
+    <div class="row" >
+        <div class="col-md-2"></div>
+        <div class="col-md-10 rank-filter" style="margin-bottom: 1em;">
+            <div class="left">
+                <a href="#" class="btn btn-primary">总榜</a>
+                <a href="#" class="btn btn-primary disabled">月榜</a>
+            </div>
+            <div class="right">
+                <a href="#" class="btn btn-primary">奖金</a>
+                <a href="#" class="btn btn-primary disabled">漏洞</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <table class="ranks table table-stripped">
+                <thead>
+                <tr>
+                    <th>排行</th>
+                    <th>昵称</th>
+                    <th>奖金</th>
+                    <th>发现漏洞数</th>
+                    <th>准确率</th>
+                    <th>勋章</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/yunzheng.png">Yun Zheng</a></td>
+                    <td>￥10000</td>
+                    <td>30</td>
+                    <td>90%</td>
+                    <td><i class="material-icons">school</i><i class="material-icons">android</i></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/xiaobao.jpg">小保</a></td>
+                    <td>￥5000</td>
+                    <td>20</td>
+                    <td>90%</td>
+                    <td><i class="material-icons">android</i></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/xiaotan.png">小檀</a></td>
+                    <td>￥4500</td>
+                    <td>17</td>
+                    <td>90%</td>
+                    <td><i class="material-icons">adb</i></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/default.png">狸狸</a></td>
+                    <td>￥4200</td>
+                    <td>15</td>
+                    <td>90%</td>
+                    <td><i class="material-icons">school</i></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/jilei.png">Jilei Yang</a></td>
+                    <td>￥3000</td>
+                    <td>12</td>
+                    <td>70%</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/gsc.jpg">gsc</a></td>
+                    <td>￥2900</td>
+                    <td>11</td>
+                    <td>70%</td>
+                    <td><i class="material-icons">bug_report</i></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/default.png">光陆离</a></td>
+                    <td>￥2800</td>
+                    <td>10</td>
+                    <td>80%</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td><a href="#"><img class="img-circle avatar" src="./img/default.png">狗尾草</a></td>
+                    <td>￥1500</td>
+                    <td>7</td>
+                    <td>75%</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth /1920) + 'px';
+                };
+
+        // Abort if browser does not support addEventListener
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</body>
+</html>

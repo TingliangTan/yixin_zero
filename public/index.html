@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <title>宜信零日漏洞</title>
+        <style>
+            html {
+                font-size: 14px;
+            }
+            .padding-big {
+                padding: 5em 0;
+            }
+            a:hover {
+                color: white;
+            }
+            a {
+                color: white;
+            }
+            .padding-middle {
+                padding: 2.5em 0;
+            }
+            .padding-small{
+                padding: 1em 1em;
+            }
+            .rect-border {
+                border: black 1px solid;
+            }
+            .circle-border {
+                margin:auto;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+            .head-bk {
+                height: 6.7rem;
+                background:black url(./img/head.jpg) center no-repeat;
+                background-size: 100% auto;
+                background-position: center 0;
+            }
+            .btn.head-left {
+                position: absolute;
+                font-size: .20rem;
+                height: 2em;
+                line-height: 2em;
+                padding-top: 0;
+                padding-bottom: 0;
+                top: 6.8rem;
+                left: 3.8rem;
+            }
+            .head-right{
+                position: absolute;
+                height: 2em;
+                font-size: .20rem;
+                padding-top: 0;
+                padding-bottom: 0;
+                line-height: 2em;
+                top: 6.8rem;
+                left: 13.3rem;
+            }
+            .round-border {
+                font-size: .3rem;
+                line-height: 1.8em;;
+                height: 1.8em;
+                text-align: center;
+                width: 2rem;
+                border: black 2px solid;
+                border-radius: .1rem;
+            }
+            .nav {
+                position: relative;
+                padding:0;
+                margin:0;
+                top:0;
+                left:0;
+                width: 100%;
+                background-color: rgb(15,55,131);
+            }
+            .nav a {
+                line-height: 4.4em;
+            }
+            .nav-item {
+                text-align: center;
+            }
+            .nav-item img {
+                padding-right: .3em;
+            }
+            .nav .row {
+                height: 4.4em;
+            }
+            .nav-item:hover{
+                background-color: rgb(0,35,101);
+            }
+            /* -------------------------------------
+ * timeline
+ * ------------------------------------- */
+            #timeline {
+                list-style: none;
+                margin: 50px 0 30px 120px;
+                padding-left: 30px;
+                border-left: 3px solid #0c0479;
+            }
+            #timeline li {
+                margin: 40px 0;
+                position: relative;
+            }
+            .date {
+                margin-top: -10px;
+                top: 50%;
+                left: -158px;
+                font-size: 1.2em;
+                line-height: 20px;
+                position: absolute;
+            }
+
+            .circle {
+                margin-top: -10px;
+                top: 50%;
+                left: -40px;
+                width: 10px;
+                height: 10px;
+                background: #ffffff;
+                border: 3px solid #0c0479;
+                border-radius: 50%;
+                display: block;
+                position: absolute;
+            }
+
+            .content {
+                max-height: 20px;
+                padding: 50px 20px 0;
+                border-color: transparent;
+                border-width: 2px;
+                border-style: solid;
+                border-radius: 0.5em;
+                position: relative;
+            }
+
+            label {
+                font-size: 1.3em;
+                position: absolute;
+                z-index: 100;
+                top: 10px;
+            }
+
+            .work a {
+                color: blue;
+            }
+
+
+            /* -------------------------------------
+             * mobile phones (vertical version only)
+             * ------------------------------------- */
+            @media screen and (max-width: 767px) {
+                #timeline {
+                    margin-left: 0;
+                    border-left: none;
+                }
+                #timeline li {
+                    margin: 50px 0;
+                }
+
+                label {
+                    width: 85%;
+                    font-size: 1.1em;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: block;
+                    transform: translateX(18px);
+                }
+
+                .content {
+                    padding-top: 45px;
+                    border-color: #eee9dc;
+                }
+                .circle, .date {
+                    display: none;
+                }
+            }
+            .avatar {
+                display: inline;
+                border-style: hidden;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="nav container">
+        <div class="row">
+            <div class="col-sm-1" ></div>
+            <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+            <div class="col-sm-9">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+                <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+                <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+                <div class="col-sm-2 nav-item"><a href="/rank.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+                <div class="col-sm-2 nav-item"><a href="javascript:void(0)"><img src="./img/register.png" height="100%"/>wenfengluo</a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class= "container" style="width: 100%;">
+        <div class= "row head-bk">
+            <a href = "/co_start.html"><div class="btn-primary btn head-left">立即试用</div></a>
+            <a href="/project_list.html"><div class="btn-primary btn head-right">参与测试</div></a>
+        </div>
+        <div class="row padding-middle" style="background-color:rgb(72,192,255);">
+            <h2 class="text-center">推荐项目</h2>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 text-right"><img src="./img/yrd.png" height="100%" /> </div>
+            <div class="col-sm-8">
+                <h4 style="color:white;">宜人贷互联网金融平台安全和业务测试</h4>
+                <p style="color:white;">宜人贷P2P金融平台，主要测试内容包括新用户首次购 买过程中的业务流程和安全漏洞。</p>
+                <p style="color:white;">2016年.11.9-2016.12.18&nbsp;&nbsp;&nbsp;&nbsp; 奖金等级★★★★★</p>
+                <a href="project_detail.html?project_name=宜人贷"><div class="btn-primary btn">立即参与</div></a>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="text-center">安全动态</h2>
+            <div class="tag row padding-small">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-2 text-center"><div class="round-border">漏洞</div></div>
+                <div class="col-sm-2 text-center"><div class="round-border">奖金</div></div>
+                <div class="col-sm-2 text-center"><div class="round-border">项目</div></div>
+                <div class="col-sm-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-7" style="padding-left: 4em;">
+                    <ul id='timeline'>
+                        <li class='work'>
+                            <div class="content">
+                                <label>
+                                    <span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                                    <a href="#">狸狸</a>向<a href="#">指旺</a>提交了一个安全漏洞
+                                </label>
+                                <span class='date'>09 Sep. 2016</span>
+                                <span class='circle'></span>
+                            </div>
+
+                        </li>
+                        <li class='work'>
+                            <div class="content">
+                                <label><span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                                    <a href="#">小保</a>向<a href="#">指旺</a>提交了一个安全漏洞</label>
+                                <span class='date'>11 Oct. 2016</span>
+                                <span class='circle'></span>
+                            </div>
+
+                        </li>
+                        <li class='work'>
+                            <div class="content">
+                                <label><span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                                    <a href="#">继磊</a>向<a href="#">宜人贷</a>提交了一个安全漏洞</label>
+                                <span class='date'>11 Nov. 2016</span>
+                                <span class='circle'></span>
+                            </div>
+
+                        </li>
+                        <li class='work'>
+                            <div class="content">
+                                <label><span class="glyphicon glyphicon-user avatar" aria-hidden="true"></span>
+                                    <a href="#">小檀</a>向<a href="#">商通贷</a>提交了一个安全漏洞</label>
+                                <span class='date'>18 Nov. 2016</span>
+                                <span class='circle'></span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-1">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img src="./img/badge.jpg" width="100%">
+        </div>
+        <div class="row" style="background: rgb(238,238,238);">
+            <h2 class="text-center">客户案例</h2>
+            <div class="row text-center padding-small col-sm-8 col-sm-push-2">
+                <div class="col-sm-3 text-center padding-small">
+                    <img src="./img/jd.png" width="100%" />
+                </div>
+                <div class="col-sm-3 text-center padding-small">
+                    <img src="./img/ljs.png" width="100%" />
+                </div>
+                <div class="col-sm-3 text-center padding-small">
+                    <img src="./img/zw.png" width="100%" />
+                </div>
+                <div class="col-sm-3 text-center padding-small">
+                    <img src="./img/yrd.png" width="100%" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="text-center">测试流程</h2>
+            <div style="padding:0 8%;">
+                <img src="./img/test.png" width="100%" />
+            </div>
+            <div class="row text-center">
+                <div class="col-sm-3 text-center">
+                    <p class="text-center">厂商提测</p>
+                    <p class="text-center">厂商发起待测的项目，可自由选择测试模式（免费试用，普通，高级）</p>
+                </div>
+                <div class="col-sm-3 text-center">
+                    <p class="text-center">安全测试</p>
+                    <p class="text-center">本平台为厂商组建一支由安全专家构成的测试团队，他们会参与项目并发现安全漏洞</p>
+                </div>
+                <div class="col-sm-3 text-center">
+                    <p class="text-center">结果反馈</p>
+                    <p class="text-center">测试人员向厂商提交安全漏洞,厂商通过本平台审阅和处理</p>
+                </div>
+                <div class="col-sm-3 text-center">
+                    <p class="text-center">项目结算</p>
+                    <p class="text-center">厂商根据漏洞评估结果,向测试人员发放奖金，本平台向厂商提供详尽的安全报告</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function () {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth) return;
+                        docEl.style.fontSize = 100 * (clientWidth /1920) + 'px';
+                    };
+
+            // Abort if browser does not support addEventListener
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <title>宜信零日漏洞</title>
+    <style>
+        html {
+            font-size: 14px;
+        }
+        .padding-big {
+            padding: 5em 0;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            color: white;
+        }
+        .padding-middle {
+            padding: 2.5em 0;
+        }
+        .padding-small{
+            padding: 1em 1em;
+        }
+        .rect-border {
+            border: black 1px solid;
+        }
+        .circle-border {
+            margin:auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .head-bk {
+            height: 7.5rem;
+            background:black url(./img/head.jpg) center no-repeat;
+            background-size: 100% auto;
+            background-position: center 0;
+        }
+        .btn.head-left {
+            position: absolute;
+            height: 2em;
+            line-height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            top: 7.2rem;
+            left: 3.3rem;
+        }
+        .head-right{
+            position: absolute;
+            height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 2em;
+            top: 7.2rem;
+            left: 13.3rem;
+        }
+        .round-border {
+            font-size: .3rem;
+            line-height: 1.8em;;
+            height: 1.8em;
+            text-align: center;
+            width: 2rem;
+            border: black 2px solid;
+            border-radius: .1rem;
+        }
+        .nav {
+            position: relative;
+            padding:0;
+            margin:0;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: rgb(15,55,131);
+        }
+        .nav-item{
+            text-align: center;
+            background-color: rgb(15,55,131);
+        }
+        .nav a {
+            line-height: 4.4em;
+        }
+        .nav-item img {
+            padding-right: .3em;
+        }
+        .nav .row {
+            height: 4.4em;
+        }
+        .nav-item:hover{
+            background-color: rgb(0,35,101);
+        }
+
+        .modal-backdrop {
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="nav container">
+    <div class="row">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+        <div class="col-sm-9">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+            <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+            <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+            <div class="col-sm-2 nav-item"><a href="/rank.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+            <div class="col-sm-2 nav-item"><div style="line-height:4.4em; color:white;" ><img src="./img/register.png" height="100%"/>wenfengluo</div></div>>
+        </div>
+    </div>
+</div>
+<style>
+   .intro {
+       background-color: rgb(72,192,255);
+       width: 100%;
+       margin-left:0;
+   }
+</style>
+<div class="container" style="width:100%;">
+    <div class="row" >
+        <div class="row intro">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3 padding-middle text-center"><img src="./img/yrd-1.jpg" height="140px"></div>
+            <div class="col-sm-5 padding-middle">
+                <div class="row">
+                    <div class="col-sm-10" style="color:white; font-size: 24px;"><span class="project_name">业务安全测验</span>
+                        <span><div class="btn btn-sm btn-primary">private</div></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8" style="color:white; font-size: 16px;line-height: 2em;"><span class="countdown">剩余时间:1天 1:45:21</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8" style="color:white; font-size: 14px;"><span class="project_name"></span>，提供全方位的风险金保障，10年100%兑付；100元起投，期限多样。</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6" style="color:white; font-size: 16px;line-height: 2em;">2016.11.9-2016.11.20</div>
+                    <div class="col-sm-6" style="color:white; font-size: 16px;line-height: 2em;">奖金等级 <span style="color:gold">★★★★★</span></div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+    <div class="row padding-small">
+        <div class="col-sm-8">
+            <table class="table table-stripped" style="background-color: #F8F8F8;">
+                <tr><th>提交漏洞</th></tr>
+                <tr>
+                    <td>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="firstname" class="col-sm-2 control-label">漏洞标题</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="firstname" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="col-sm-2 control-label">漏洞类型</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="lastname" >
+                                        <option> WEB漏洞</option>
+                                        <option> 存储型XSS</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastname" class="col-sm-2 control-label">漏洞等级</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" id="lp_type" >
+                                        <option>高危</option>
+                                        <option>重要</option>
+                                        <option>普通</option>
+                                        <option>一般</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname" class="col-sm-2 control-label">漏洞描述</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname" class="col-sm-2 control-label">漏洞详情</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstname" class="col-sm-2 control-label">修复方案</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" ></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">匿名提交
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <div id="submitBtn" class="btn btn-primary">提交漏洞</div>
+                                </div>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <table class="table table-stripped" style="background-color: #F8F8F8;">
+                    <tr>
+                        <th>漏洞提交须知</th>
+                    </tr>
+                    <tr>
+                        <td>1、互联网漏洞指互联网或传统厂商的Web应用、移动APP、客户端中存在的安全问题，并没有固定的厂商限制。<br>
+                            2、不局限于传统意义上的产品漏洞，有证据的安全事件均可作为漏洞提交。<br>
+                            3、建议您自主保留以下信息：测试过程记录、截图、漏洞视频（推荐）。如发生争议，以上内容会作为判定证据。<br>
+                            4、现金奖励仅针对高质量、高威胁性的互联网漏洞，评定因素包括且不局限于：知名厂商的高危漏洞；漏洞影响范围广、影响数据量大。<br>
+                            5、对于在漏洞盒子平台发布的漏洞，所有权归提交者所有，漏洞提交者需要保证研究漏洞的方法、方式、工具及手段的合法性，平台对此不承担任何法律责任。平台尽量保证信息的可靠性，但是不绝对保证所有信息来源的可信，其中漏洞证明方法可能存在攻击性，但是一切都是为了说明问题而存在，漏洞盒子对此不负担任何责任。厂商在平台注册时需要确认能够代表企业身份授权漏洞提交者发现安全问题并且对安全问题及时处理和响应，平台对厂商内部流程导致的问题不负担任何责任。</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="messageDlg" tabindex="100" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                       提交漏洞
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <h2 class="text-success">提交漏洞成功!</h2>
+                </div>
+                <div class="modal-footer">
+                    <button id="back" type="button" class="btn btn-primary">
+                        返回详请页
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <script>
+        function getParam(key){
+            var searchStr = location.search;
+            var val = "";
+            if (searchStr.indexOf(key+"=")>0) {
+                var re = new RegExp(".*"+key+"=(.*)");
+                var valStr = searchStr.replace(re, '$1');
+                val = valStr.replace(/&.*/g, '');
+            }
+            return val;
+        }
+        var projectName= decodeURIComponent(getParam("project_name"));
+        var projectNameNodes = document.getElementsByClassName("project_name");
+        for(var i = 0; i< projectNameNodes.length; i++) {
+            projectNameNodes.item(i).innerHTML=projectName;
+        }
+        document.getElementById("back").onclick=function(){
+            location= "/project_detail.html"+location.search;
+        };
+        document.getElementById("submitBtn").onclick=function(){
+            $("#messageDlg").modal();
+        };
+
+        document.getElementById("submitBtn").onclick=function(){
+            $("#messageDlg").modal();
+        };
+    </script>
+</div>
+</body>
+</html>

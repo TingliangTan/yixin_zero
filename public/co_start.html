@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <title>宜信零日漏洞</title>
+        <style>
+            html {
+                font-size: 14px;
+            }
+            .padding-big {
+                padding: 5em 0;
+            }
+            a:hover {
+                color: white;
+            }
+            a {
+                color: white;
+            }
+            .padding-middle {
+                padding: 2.5em 0;
+            }
+            .padding-small{
+                padding: 1em 1em;
+            }
+            .rect-border {
+                border: black 1px solid;
+            }
+            .circle-border {
+                margin:auto;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+            .head-bk {
+                height: 6.7rem;
+                background:black url(./img/head.jpg) center no-repeat;
+                background-size: 100% auto;
+                background-position: center 0;
+            }
+            .btn.head-left {
+                position: absolute;
+                font-size: .20rem;
+                height: 2em;
+                line-height: 2em;
+                padding-top: 0;
+                padding-bottom: 0;
+                top: 6.8rem;
+                left: 3.8rem;
+            }
+            .head-right{
+                position: absolute;
+                height: 2em;
+                font-size: .20rem;
+                padding-top: 0;
+                padding-bottom: 0;
+                line-height: 2em;
+                top: 6.8rem;
+                left: 13.3rem;
+            }
+            .round-border {
+                font-size: .3rem;
+                line-height: 1.8em;;
+                height: 1.8em;
+                text-align: center;
+                width: 2rem;
+                border: black 2px solid;
+                border-radius: .1rem;
+            }
+            .nav {
+                position: relative;
+                padding:0;
+                margin:0;
+                top:0;
+                left:0;
+                width: 100%;
+                background-color: rgb(15,55,131);
+            }
+            .nav a {
+                line-height: 4.4em;
+            }
+            .nav-item {
+                text-align: center;
+            }
+            .nav-item img {
+                padding-right: .3em;
+            }
+            .nav .row {
+                height: 4.4em;
+            }
+            .nav-item:hover{
+                background-color: rgb(0,35,101);
+            }
+            /* -------------------------------------
+ * timeline
+ * ------------------------------------- */
+            #timeline {
+                list-style: none;
+                margin: 50px 0 30px 120px;
+                padding-left: 30px;
+                border-left: 3px solid #0c0479;
+            }
+            #timeline li {
+                margin: 40px 0;
+                position: relative;
+            }
+            .date {
+                margin-top: -10px;
+                top: 50%;
+                left: -158px;
+                font-size: 1.2em;
+                line-height: 20px;
+                position: absolute;
+            }
+
+            .circle {
+                margin-top: -10px;
+                top: 50%;
+                left: -40px;
+                width: 10px;
+                height: 10px;
+                background: #ffffff;
+                border: 3px solid #0c0479;
+                border-radius: 50%;
+                display: block;
+                position: absolute;
+            }
+
+            .content {
+                max-height: 20px;
+                padding: 50px 20px 0;
+                border-color: transparent;
+                border-width: 2px;
+                border-style: solid;
+                border-radius: 0.5em;
+                position: relative;
+            }
+
+            label {
+                font-size: 1.3em;
+                position: absolute;
+                z-index: 100;
+                top: 10px;
+            }
+
+            .work a {
+                color: blue;
+            }
+
+
+            /* -------------------------------------
+             * mobile phones (vertical version only)
+             * ------------------------------------- */
+            @media screen and (max-width: 767px) {
+                #timeline {
+                    margin-left: 0;
+                    border-left: none;
+                }
+                #timeline li {
+                    margin: 50px 0;
+                }
+
+                label {
+                    width: 85%;
+                    font-size: 1.1em;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    display: block;
+                    transform: translateX(18px);
+                }
+
+                .content {
+                    padding-top: 45px;
+                    border-color: #eee9dc;
+                }
+                .circle, .date {
+                    display: none;
+                }
+            }
+            .avatar {
+                display: inline;
+                border-style: hidden;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+    <div class="nav container">
+        <div class="row">
+            <div class="col-sm-1" ></div>
+            <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+            <div class="col-sm-9">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
+                <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
+                <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+                <div class="col-sm-2 nav-item"><a href="/toplist.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
+                <div class="col-sm-2 nav-item"><a href="javascript:void(0)"><img src="./img/register.png" height="100%"/>wenfengluo</a></div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
+
