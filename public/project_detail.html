@@ -17,7 +17,7 @@
             color: white;
         }
         .nav a {
-            color: white;
+            color: rgb(77,189,248);
         }
         .padding-middle {
             padding: 2.5em 0;
@@ -232,7 +232,7 @@
                 </div>
             </div>
             <div class="col-sm-2">
-                <div class="btn btn-primary" id="report" style="margin-top: 7em;">提交报告</div>
+                <div class="btn btn-primary" id="report" style="margin-top: 7em;">提交漏洞</div>
                 <div class="btn btn-primary" id="participate" style="margin-top: 7em;">立即参与</div>
             </div>
             <div class="col-sm-1"></div>
@@ -240,8 +240,8 @@
     </div>
     <div class="row padding-small" id="public-detail">
         <div class="col-sm-8">
-            <table class="table table-bordered" id="private-detail">
-            <tr><th>核心API文档</th></tr>
+            <table class="table table-bordered" id="private-detail" style="width:100%">
+            <tr><th style="width:100%;">核心API文档</th></tr>
             <tr>
                 <td>
                     <div class="btn btn-default">下载</div>
@@ -463,7 +463,7 @@
             document.getElementById("private-detail").style.display="none";
             document.getElementById("logo").src = "./img/qfq.jpg";
         } else {
-            document.getElementById("private-detail").style.display="block";
+            document.getElementById("private-detail").style.display="table";
         }
         participateNode.onclick= function(){
             $("#messageDlg").modal();

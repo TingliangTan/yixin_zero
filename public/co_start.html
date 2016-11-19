@@ -1,207 +1,556 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-        <title>宜信零日漏洞</title>
-        <style>
-            html {
-                font-size: 14px;
-            }
-            .padding-big {
-                padding: 5em 0;
-            }
-            a:hover {
-                color: white;
-            }
-            a {
-                color: white;
-            }
-            .padding-middle {
-                padding: 2.5em 0;
-            }
-            .padding-small{
-                padding: 1em 1em;
-            }
-            .rect-border {
-                border: black 1px solid;
-            }
-            .circle-border {
-                margin:auto;
-                border-radius: 50%;
-                overflow: hidden;
-            }
-            .head-bk {
-                height: 6.7rem;
-                background:black url(./img/head.jpg) center no-repeat;
-                background-size: 100% auto;
-                background-position: center 0;
-            }
-            .btn.head-left {
-                position: absolute;
-                font-size: .20rem;
-                height: 2em;
-                line-height: 2em;
-                padding-top: 0;
-                padding-bottom: 0;
-                top: 6.8rem;
-                left: 3.8rem;
-            }
-            .head-right{
-                position: absolute;
-                height: 2em;
-                font-size: .20rem;
-                padding-top: 0;
-                padding-bottom: 0;
-                line-height: 2em;
-                top: 6.8rem;
-                left: 13.3rem;
-            }
-            .round-border {
-                font-size: .3rem;
-                line-height: 1.8em;;
-                height: 1.8em;
-                text-align: center;
-                width: 2rem;
-                border: black 2px solid;
-                border-radius: .1rem;
-            }
-            .nav {
-                position: relative;
-                padding:0;
-                margin:0;
-                top:0;
-                left:0;
-                width: 100%;
-                background-color: rgb(15,55,131);
-            }
-            .nav a {
-                line-height: 4.4em;
-            }
-            .nav-item {
-                text-align: center;
-            }
-            .nav-item img {
-                padding-right: .3em;
-            }
-            .nav .row {
-                height: 4.4em;
-            }
-            .nav-item:hover{
-                background-color: rgb(0,35,101);
-            }
-            /* -------------------------------------
- * timeline
- * ------------------------------------- */
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/bootstrap.min.blue.css">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <title>宜信零日漏洞</title>
+    <style>
+        .modal-backdrop {
+            z-index: 0;
+        }
+        html {
+            font-size: 14px;
+        }
+        .padding-big {
+            padding: 5em 0;
+        }
+        a:hover {
+            color: white;
+        }
+        a {
+            color: rgb(77,189,248);
+        }
+        .padding-middle {
+            padding: 2.5em 0;
+        }
+        .padding-small{
+            padding: 1em 1em;
+        }
+        .rect-border {
+            border: black 1px solid;
+        }
+        .circle-border {
+            margin:auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .head-bk {
+            height: 6.7rem;
+            background:black url(./img/head.jpg) center no-repeat;
+            background-size: 100% auto;
+            background-position: center 0;
+        }
+        .btn.head-left {
+            position: absolute;
+            font-size: .20rem;
+            height: 2em;
+            line-height: 2em;
+            padding-top: 0;
+            padding-bottom: 0;
+            top: 6.8rem;
+            left: 3.8rem;
+        }
+        .head-right{
+            position: absolute;
+            height: 2em;
+            font-size: .20rem;
+            padding-top: 0;
+            padding-bottom: 0;
+            line-height: 2em;
+            top: 6.8rem;
+            left: 13.3rem;
+        }
+        .round-border {
+            font-size: .3rem;
+            line-height: 1.8em;;
+            height: 1.8em;
+            text-align: center;
+            width: 2rem;
+            border: black 2px solid;
+            border-radius: .1rem;
+        }
+        .nav {
+            position: relative;
+            padding:0;
+            margin:0;
+            top:0;
+            left:0;
+            width: 100%;
+            background-color: rgb(15,55,131);
+        }
+        .nav a {
+            color: rgb(77,189,248);
+            line-height: 4.4em;
+        }
+        .nav-item {
+            text-align: center;
+        }
+        .nav-item img {
+            padding-right: .3em;
+        }
+        .nav .row {
+            height: 4.4em;
+        }
+        .nav-item:hover{
+            background-color: rgb(0,35,101);
+        }
+        /* -------------------------------------
+* timeline
+* ------------------------------------- */
+        #timeline {
+            list-style: none;
+            margin: 50px 0 30px 120px;
+            padding-left: 30px;
+            border-left: 3px solid #0c0479;
+        }
+        #timeline li {
+            margin: 40px 0;
+            position: relative;
+        }
+        .date {
+            margin-top: -10px;
+            top: 50%;
+            left: -158px;
+            font-size: 1.2em;
+            line-height: 20px;
+            position: absolute;
+        }
+
+        .circle {
+            margin-top: -10px;
+            top: 50%;
+            left: -40px;
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border: 3px solid #0c0479;
+            border-radius: 50%;
+            display: block;
+            position: absolute;
+        }
+
+        .content {
+            max-height: 20px;
+            padding: 50px 20px 0;
+            border-color: transparent;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 0.5em;
+            position: relative;
+        }
+
+        label {
+            font-size: 1.3em;
+            position: absolute;
+            z-index: 100;
+            top: 10px;
+        }
+
+        .work a {
+            color: blue;
+        }
+
+
+        /* -------------------------------------
+         * mobile phones (vertical version only)
+         * ------------------------------------- */
+        @media screen and (max-width: 767px) {
             #timeline {
-                list-style: none;
-                margin: 50px 0 30px 120px;
-                padding-left: 30px;
-                border-left: 3px solid #0c0479;
+                margin-left: 0;
+                border-left: none;
             }
             #timeline li {
-                margin: 40px 0;
-                position: relative;
-            }
-            .date {
-                margin-top: -10px;
-                top: 50%;
-                left: -158px;
-                font-size: 1.2em;
-                line-height: 20px;
-                position: absolute;
-            }
-
-            .circle {
-                margin-top: -10px;
-                top: 50%;
-                left: -40px;
-                width: 10px;
-                height: 10px;
-                background: #ffffff;
-                border: 3px solid #0c0479;
-                border-radius: 50%;
-                display: block;
-                position: absolute;
-            }
-
-            .content {
-                max-height: 20px;
-                padding: 50px 20px 0;
-                border-color: transparent;
-                border-width: 2px;
-                border-style: solid;
-                border-radius: 0.5em;
-                position: relative;
+                margin: 50px 0;
             }
 
             label {
-                font-size: 1.3em;
-                position: absolute;
-                z-index: 100;
-                top: 10px;
+                width: 85%;
+                font-size: 1.1em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                display: block;
+                transform: translateX(18px);
             }
 
-            .work a {
-                color: blue;
+            .content {
+                padding-top: 45px;
+                border-color: #eee9dc;
             }
-
-
-            /* -------------------------------------
-             * mobile phones (vertical version only)
-             * ------------------------------------- */
-            @media screen and (max-width: 767px) {
-                #timeline {
-                    margin-left: 0;
-                    border-left: none;
-                }
-                #timeline li {
-                    margin: 50px 0;
-                }
-
-                label {
-                    width: 85%;
-                    font-size: 1.1em;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    display: block;
-                    transform: translateX(18px);
-                }
-
-                .content {
-                    padding-top: 45px;
-                    border-color: #eee9dc;
-                }
-                .circle, .date {
-                    display: none;
-                }
+            .circle, .date {
+                display: none;
             }
-            .avatar {
-                display: inline;
-                border-style: hidden;
-                border-radius: 50%;
-                margin-right: 10px;
-            }
-        </style>
-    </head>
-    <body>
-    <div class="nav container">
-        <div class="row">
-            <div class="col-sm-1" ></div>
-            <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
-            <div class="col-sm-9">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2 nav-item"><a href="/"><img src="./img/index.png" height="100%" />首页</a></div>
-                <div class="col-sm-2 nav-item"><a href="/project_list.html"><img src="./img/award.png" height="100%"/>悬赏项目</a></div>
-                <div class="col-sm-2 nav-item"><a href="/report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
-                <div class="col-sm-2 nav-item"><a href="/toplist.html"><img src="./img/toplist.png" height="100%"/>排行榜</a></div>
-                <div class="col-sm-2 nav-item"><a href="javascript:void(0)"><img src="./img/register.png" height="100%"/>wenfengluo</a></div>
-            </div>
+        }
+        .avatar {
+            display: inline;
+            border-style: hidden;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        body {
+            background-color: white;
+        }
+        a {
+            color: #ffffff;
+        }
+        .avatar {
+            height: 100px;
+            width: 100px;
+        }
+        .mdl-checkbox {
+            width: auto;
+        }
+        .header {
+            padding-left: 10px;
+            padding-top: 10px;
+        }
+        .info {
+            background-color: #ffffff;
+            padding: 20px 10px;
+        }
+        .navbar li.active>a {
+            color: green;
+            border-bottom: solid;
+            padding-right: 30px;
+            padding-left: 30px;
+        }
+        .control-label {
+            font-size: 16px;
+        }
+        legend {
+            font-size: 20px;
+            padding-top: 1em;
+            line-height:2em;
+        }
+    </style>
+</head>
+<body>
+<div class="nav container">
+    <div class="row">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-2" style="height: 4.4em; padding:1em; text-align: center;"><img src="./img/logo.png" height="100%"/></div>
+        <div class="col-sm-9">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2 nav-item"><a href="/co_index.html"><img src="./img/index.png" height="100%" />首页</a></div>
+            <div class="col-sm-2 nav-item"><a href="/co_start.html"><img src="./img/award.png" height="100%"/>发起悬赏</a></div>
+            <div class="col-sm-2 nav-item"><a href="/co_report.html"><img src="./img/report.png" height="100%"/>漏洞报告</a></div>
+            <div class="col-sm-2 nav-item"><a href="/inner_project.html"><img src="./img/toplist.png" height="100%"/>Dashboard</a></div>
+            <div class="col-sm-2 nav-item"><a href="javascript:void(0)"><img src="./img/register.png" height="100%"/>宜人贷</a></div>
         </div>
     </div>
-    </body>
+</div>
+</div>
+<div class="container" style="width:100%;">
+    <div class="row" style="background-color: rgb(72,192,255); padding:0 6em;">
+        <ul class="media-list header">
+            <li class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object avatar" src="./img/yrd-1.jpg" alt="宜人贷">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">宜人贷理财</h4>
+                    <p>宜信旗下P2P网贷平台</p>
+                    <p>官网地址：<a href="https://www.yirendai.com/">https://www.yirendai.com/</a></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row" style="font-size: 16px; padding: 0 6em;">
+        <nav class="navbar" style="margin-bottom: 0">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav" style="background-color: #e0e0e0">
+                        <li class="active" id="public-li"><a href="#" id="public-mode">Public模式</a></li>
+                        <li id="private-li"><a href="#" id="private-mode">Private模式</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="row info" style="padding: 0 6em;">
+        <div class="col-md-8">
+            <form class="form-horizontal">
+                <fieldset><legend>基本信息</legend></fieldset>
+                <div class="form-group">
+                    <label for="image" class="col-sm-2 control-label">项目图片</label>
+                    <div class="col-sm-10">
+                        <input type="button" class="btn btn-default" id="image" value="上传图片">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="title" class="col-sm-2 control-label">项目标题</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" required="">
+                    </div>
+                </div>
+
+                <div class="form-group private">
+                    <label for="image" class="col-sm-2 control-label">核心API文档</label>
+                    <div class="col-sm-10">
+                        <input type="button" class="btn btn-default" id="image" value="选择文件">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="desc" class="col-sm-2 control-label">项目介绍</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" id="desc"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="target" class="col-sm-2 control-label">测试目标</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="target" required="">
+                    </div>
+                </div>
+
+                <fieldset><legend>奖金评级</legend></fieldset>
+                <div class="form-group">
+                    <label for="high" class="col-sm-2 control-label">高危奖金</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="high" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="medium" class="col-sm-2 control-label">中危奖金</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="medium" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="low" class="col-sm-2 control-label">低危奖金</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="low" required="">
+                    </div>
+                </div>
+
+                <fieldset><legend>漏洞定义</legend></fieldset>
+                <div class="form-group">
+                    <label for="highBug" class="col-sm-2 control-label">高危漏洞</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" id="highBug"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mediumBug" class="col-sm-2 control-label">中危漏洞</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" id="mediumBug"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lowBug" class="col-sm-2 control-label">低危漏洞</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" id="lowBug"></textarea>
+                    </div>
+                </div>
+                <fieldset><legend>其他</legend></fieldset>
+                <div class="form-group">
+                    <label for="lowBug" class="col-sm-2 control-label">规则和注意事项</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3" id="lowBug"></textarea>
+                    </div>
+                </div>
+                <div class="form-group  private">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">邀请人员</label>
+                        <div id="emails"class="col-sm-10">
+                            <div class="email">
+                                <div class="col-sm-8" style="padding-right: 0; padding-bottom: 8px;">
+                                    <div class="input-group" style="width:80%">
+                                        <span class="input-group-addon glyphicon glyphicon-envelope" id="envelope" style="top: 0"></span>
+                                        <input type="email" name="email" class="form-control" aria-describedby="envelope" placeholder="内部邮件地址"style="width:80%" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2 add" style="padding-left: 0">
+                                    <button class="mdl-button mdl-js-button mdl-button--fab" style="height: 36px;width:36px;min-width: 36px;">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--
+                    <label for="title" class="col-sm-2 control-label">邀请成员</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" required="">
+                    </div>-->
+                </div>
+                <div class="form-group public">
+                    <label for="" class="col-sm-2 control-label">项目门槛</label>
+                    <div class="col-sm-10">
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                            <span class="mdl-checkbox__label">白帽子</span>
+                        </label>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+                            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">资深白帽子</span>
+                        </label>
+                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+                            <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input">
+                            <span class="mdl-checkbox__label">安全专家</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <button type="button" class="btn btn-primary" id="submit">发布项目</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4" style="padding-top: 5em;">
+            <div class="panel panel-default" style="float: right;">
+                <div class="panel-heading">模式说明</div>
+                <div class="panel-body">
+                    <p>Public模式用于邀请白帽子和行业专家公开测试：</p>
+                    <p>- 白帽子会测试厂商项目的安全漏洞；</p>
+                    <p>- 行业专家会测试厂商项目的业务漏洞；</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="messageDlg" tabindex="100" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    发布项目
+                </h4>
+            </div>
+            <div class="modal-body">
+                <h2 class="text-success">项目发布成功!</h2>
+            </div>
+            <div class="modal-footer">
+                <a href="./inner_project.html" type="button" class="btn btn-primary">
+                    返回Dashboard
+                </a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    var publicNode=document.getElementById("public-mode");
+    function showClass(cls, isHidden){
+        var nodes = document.getElementsByClassName(cls);
+        for(var i= 0; i<nodes.length; i++) {
+            if(isHidden) {
+                nodes.item(i).style.display="none";
+            } else {
+                nodes.item(i).style.display="block";
+            }
+        }
+    }
+    showClass("public", false);
+    showClass("private", true);
+    publicNode.onclick = function(){
+        document.getElementById("public-li").className="active";
+        document.getElementById("private-li").className="";
+        showClass("public", false);
+        showClass("private", true);
+
+    };
+    var privateNode=document.getElementById("private-mode");
+    privateNode.onclick = function() {
+        document.getElementById("public-li").className="";
+        document.getElementById("private-li").className="active";
+        showClass("public", true);
+        showClass("private", false);
+    };
+    document.getElementById("submit").onclick = function(){
+        $("#messageDlg").modal();
+    }
+    ids = 1;
+    $("#add-api").click(function(e) {
+        e.preventDefault();
+        $("#apis").append('<div class="api">\
+                        <div class="form-group">\
+                            <label for="api-url'+ids + '" class="col-sm-2 control-label">API URL</label>\
+                            <div class="col-sm-10">\
+                                <input type="url" class="form-control" id="api-url'+ids + '">\
+                            </div>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="api-method'+ids + '" class="col-sm-2 control-label">方法</label>\
+                            <div class="col-sm-10">\
+                                <input type="text" class="form-control" id="api-method'+ids + '">\
+                            </div>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="api-para'+ids + '" class="col-sm-2 control-label">参数</label>\
+                            <div class="col-sm-10">\
+                                <textarea class="form-control" rows="2" id="api-para'+ids + '"></textarea>\
+                            </div>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="api-header'+ids + '" class="col-sm-2 control-label">Header</label>\
+                            <div class="col-sm-10">\
+                                <textarea class="form-control" rows="2" id="api-header'+ids + '"></textarea>\
+                            </div>\
+                        </div>\
+                        <div class="form-group">\
+                            <label for="api-body'+ids + '" class="col-sm-2 control-label">Body</label>\
+                            <div class="col-sm-10">\
+                                <textarea class="form-control" rows="2" id="api-body'+ids + '"></textarea>\
+                            </div>\
+                        </div>\
+                    </div>');
+        ids += 1;
+        return;
+    });
+
+    $(".add").click(function(e) {
+        e.preventDefault();
+        $(this).remove();
+        console.log($(".email:last-child"));
+        $(".email:last-child").append('<div class="col-sm-2 remove" style="padding-left: 0">\
+                               <button class="mdl-button mdl-js-button mdl-button--fab" style="height: 36px;width:36px;min-width: 36px;">\
+                                  <i class="material-icons">delete</i>\
+                                </button>\
+                            </div>');
+        $("#emails").append('<div class="email">\
+                        <div class="col-sm-8" style="padding-right: 0">\
+                            <div class="input-group" style="width:80%">\
+                              <span class="input-group-addon glyphicon glyphicon-envelope" id="envelope" style="top: 0"></span>\
+                              <input type="email" name="email" class="form-control" aria-describedby="envelope" placeholder="内部邮件地址"style="width:80%" />\
+                            </div>\
+                        </div>\
+                        <div class="col-sm-2 add" style="padding-left: 0">\
+                           <button class="mdl-button mdl-js-button mdl-button--fab" style="height: 36px;width:36px;min-width: 36px;">\
+                              <i class="material-icons">add</i>\
+                            </button>\
+                        </div>\
+                    </div>');
+        // $(this).remove();
+        return 0;
+
+
+    });
+    $(".remove").click(function(e) {
+        e.preventDefault();
+        $(this).parent(".email").remove();
+        return 0;
+    });
+
+</script>
+
+</body>
 </html>
 
